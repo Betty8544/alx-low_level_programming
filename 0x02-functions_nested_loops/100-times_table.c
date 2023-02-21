@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- *  print_to_98 - prints time table of dimention
+ *  print_times_table - prints time table of dimention
  *  @n: Dimention of times table
  *
  *  Return: void
  */
-void print_to_98(int n)
+void print_times_table(int n)
 {
 	int a;
 	int b;
