@@ -1,4 +1,4 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
  * main - entry point
@@ -7,22 +7,18 @@
  */
 int main(void)
 {
-	int i;
-	long int a = 1;
-	long int b = 2;
+	int i, z = 0;
 
-	for (i = 0; i < 50; i++)
+	while (i < 1024)
 	{
-		printf("%ld", a);
-		if (i < 49)
+		if ((i % 3 == 0) || (i % 5 == 0))
 		{
-			b += a;
-			a = b - a;
-			printf(", ");
+			z += i;
 		}
+
+		i++;
 	}
 
-	putchar('\n');
-
+	printf("%d\n", z);
 	return (0);
 }
