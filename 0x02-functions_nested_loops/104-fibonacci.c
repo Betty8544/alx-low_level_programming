@@ -1,47 +1,50 @@
-#include <limits.h>
-#include <math.h>
 #include <stdio.h>
 
-/**
+/** 
  * main - entry point
  *
  * Return: Always 0.
  */
 int main(void)
 {
-	int i;
-	int j;
-	long a_lo = 1;
-	long b_lo = 2;
-	long a_hi = 0;
-	long b_hi = 0;
-	int limit_len = floor(log10(LONG_MAX / 2));
-	long limit = pow(10, limit_len);
+	int count;
+	unsigned long fib1 = 0, fib2 = 1, sum;
+	unsigned long fib1_half1, fib1_half2, fib2_half1, fib2_half2;
+	unsigned long half1, half2;
 
-	for (i = 0; i < 98; i++)
+	for (count = 0; count < 92; count++)
 	{
-		if (a_hi)
-		{
-			printf("%ld", a_hi);
-			for (j = floor(log10(a_lo)) + 1; j < limit_len; j++)
-				putchar('0');
-		}
-		printf("%ld", a_lo);
-		b_lo = b_lo + a_lo;
-		a_lo = b_lo - a_lo;
-		a_hi = b_hi - a_hi;
-		b_hi = b_hi + a_hi;
-		if (b_lo >= limit)
-		{
-			b_hi += b_lo / limit;
-			b_lo %= limit;
-			a_hi += a_lo / limit;
-			a_lo %= limit;
-		}
-		if (i < 97)
-			printf(", ");
-	}
-	putchar('\n');
+		sum = fib1 + fib2;
+		printf("%lu, ", sum);
 
+		fib1 = fib2;
+		fib2 = sum;
+	}
+
+	fib1_half1 = fib1 / 10000000000;
+	fib2_half1 = fib2 / 10000000000;
+	fib1_half2 = fib1 % 10000000000;
+	fib2_half2 = fib2 % 10000000000;
+
+	for (count = 93; count < 99; count++)
+	{
+		half1 = fib1_half1 + fib2_half1;
+		half2 = fib1_half2 + fib2_half2;
+		if (fib1_half2 + fib2_half2 > 9999999999)
+		{
+			half1 += 1;
+			half2 %= 10000000000;
+		}
+
+		printf("%lu%lu", half1, half2);
+		if (count != 98)
+			printf(", ");
+
+		fib1_half1 = fib2_half1;
+		fib1_half2 = fib2_half2;
+		fib2_half1 = half1;
+		fib2_half2 = half2;
+	}
+	printf("\n");
 	return (0);
 }
