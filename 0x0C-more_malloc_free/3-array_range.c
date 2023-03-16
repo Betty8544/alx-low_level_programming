@@ -3,29 +3,29 @@
 
 /**
   * array_range - ...
-  * @min: minimum
-  * @max: maximum
+  * @min: ...
+  * @max: ...
   *
   * Return: integer value
   */
 int *array_range(int min, int max)
 {
-    int *a, i = 0;
+	int *a, i = 0;
 
-    if (min > max)
-        return (NULL);
+	if (min > max)
+		return (NULL);
 
-    a = malloc((sizeof(int) * (max - min)) + sizeof(int));
+	a = malloc((sizeof(int) * (max - min)) + sizeof(int));
 
-    if (a == NULL)
-        return (NULL);
+	if (a == NULL)
+		return (NULL);
 
-    while (min <= max)
+	while (min <= max)
 	{
-        a[i] = min;
-        i++;
-        min++;
+		a[i] = min;
+		i++;
+		min++;
 	}
 
-    return (a);
+	return (a);
 }
